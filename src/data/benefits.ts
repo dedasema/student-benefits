@@ -11,7 +11,7 @@ import {
   AdobeIcon,
   TableauIcon,
   CourseraIcon,
-} from '@/components/icons';
+} from '@/components/icons'; // Import custom icons
 
 export interface Benefit {
   id: string;
@@ -42,7 +42,7 @@ export const benefits: Benefit[] = [
   {
     id: 'github',
     title: 'GitHub Student Developer Pack',
-    Icon: GitHubIcon,
+    Icon: GitHubIcon, // Updated Icon
     imageHint: 'code development collaboration',
     type: 'free',
     description:
@@ -77,7 +77,7 @@ export const benefits: Benefit[] = [
   {
     id: 'azure',
     title: 'Microsoft Azure for Students',
-    Icon: AzureIcon,
+    Icon: AzureIcon, // Updated Icon
     imageHint: 'cloud computing services',
     type: 'free',
     description:
@@ -120,7 +120,7 @@ export const benefits: Benefit[] = [
   {
     id: 'aws',
     title: 'AWS Educate',
-    Icon: AWSIcon,
+    Icon: AWSIcon, // Updated Icon
     imageHint: 'cloud infrastructure learning',
     type: 'free',
     description:
@@ -162,7 +162,7 @@ export const benefits: Benefit[] = [
   {
     id: 'jetbrains',
     title: 'JetBrains IDEs',
-    Icon: JetBrainsIcon,
+    Icon: JetBrainsIcon, // Updated Icon
     imageHint: 'code editor programming',
     type: 'free',
     description:
@@ -215,7 +215,7 @@ export const benefits: Benefit[] = [
     {
     id: 'autodesk',
     title: 'Autodesk Education',
-    Icon: AutodeskIcon,
+    Icon: AutodeskIcon, // Updated Icon
     imageHint: '3d design engineering architecture',
     type: 'free',
     description:
@@ -257,7 +257,7 @@ export const benefits: Benefit[] = [
   {
     id: 'figma',
     title: 'Figma Education',
-    Icon: FigmaIcon,
+    Icon: FigmaIcon, // Updated Icon
     imageHint: 'ui ux design collaboration',
     type: 'free',
     description:
@@ -302,7 +302,7 @@ export const benefits: Benefit[] = [
   {
     id: 'mongodb',
     title: 'MongoDB University',
-    Icon: MongoDBIcon,
+    Icon: MongoDBIcon, // Updated Icon
     imageHint: 'database nosql learning',
     type: 'free',
     description:
@@ -347,7 +347,7 @@ export const benefits: Benefit[] = [
   {
     id: 'unity',
     title: 'Unity Student Plan',
-    Icon: UnityIcon,
+    Icon: UnityIcon, // Updated Icon
     imageHint: 'game development vr ar',
     type: 'free',
     description:
@@ -392,7 +392,7 @@ export const benefits: Benefit[] = [
   {
     id: 'adobe',
     title: 'Adobe Creative Cloud',
-    Icon: AdobeIcon,
+    Icon: AdobeIcon, // Updated Icon
     imageHint: 'graphic design video editing photo',
     type: 'discounted',
     description:
@@ -447,7 +447,7 @@ export const benefits: Benefit[] = [
   {
     id: 'tableau',
     title: 'Tableau for Students',
-    Icon: TableauIcon,
+    Icon: TableauIcon, // Updated Icon
     imageHint: 'data visualization analytics business',
     type: 'discounted',
     description:
@@ -493,7 +493,7 @@ export const benefits: Benefit[] = [
   {
     id: 'coursera',
     title: 'Coursera for Campus',
-    Icon: CourseraIcon,
+    Icon: CourseraIcon, // Updated Icon
     imageHint: 'online courses education learning skill',
     type: 'discounted',
     description:
