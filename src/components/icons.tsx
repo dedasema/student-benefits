@@ -34,11 +34,16 @@ export const AutodeskIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 export const FigmaIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2a10 10 0 00-7.07 17.07A10 10 0 0019.07 4.93 9.93 9.93 0 0012 2zM7 7a5 5 0 0110 0 5 5 0 01-10 0z"/>
-    <path d="M12 12a5 5 0 015 5 5 5 0 01-10 0 5 5 0 015-5z"/>
+  <svg viewBox="0 0 16 24" fill="currentColor" {...props}>
+    {/* Corrected Figma Icon SVG Paths */}
+    <path d="M8 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="#0acf83"></path>
+    <path d="M4 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#a259ff"></path>
+    <path d="M4 4a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z" fill="#f24e1e"></path>
+    <path d="M8 4a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#ff7262"></path>
+    <path d="M12 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="#1abcfe"></path>
   </svg>
 );
+
 
 export const MongoDBIcon = (props: React.SVGProps<SVGSVGElement>) => (
  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -79,3 +84,4 @@ export const CourseraIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
  </svg>
 );
+
