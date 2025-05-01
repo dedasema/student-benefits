@@ -21,7 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark"> {/* Ensure dark class is on html */}
+    <html lang="es" className="dark">
+      {/* Ensure dark class is on html */}
       <body
         className={cn(
           `${roboto.variable} font-sans antialiased`,
