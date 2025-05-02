@@ -1,4 +1,4 @@
-'use client';
+{'use client';
 
 import type { Benefit } from '@/data/benefits';
 import {
@@ -11,8 +11,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link'; // Although used via `asChild`, it's good practice
+import Link from 'next/link';
 import {
   Dialog,
   DialogContent,
@@ -24,13 +23,18 @@ import {
   DialogClose
 } from "@/components/ui/dialog";
 import { ScrollArea } from './ui/scroll-area';
-import { Badge } from './ui/badge'; // Import Badge
+import { Badge } from './ui/badge';
+import { motion, type Variants } from 'framer-motion'; // Import motion and Variants type
+
+// Define Card component as motion component
+const MotionCard = motion(Card);
 
 interface BenefitCardProps {
   benefit: Benefit;
+  variants?: Variants; // Accept animation variants
 }
 
-export function BenefitCard({ benefit }: BenefitCardProps) {
+export function BenefitCard({ benefit, variants }: BenefitCardProps) {
   const { Icon } = benefit;
 
   const renderDetailList = (title: string, items?: string[]) => {
@@ -48,10 +52,15 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
   };
 
   return (
-    <Card className="flex flex-col h-full overflow-hidden bg-card shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out border border-border rounded-lg group">
-      <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2">
+    <MotionCard
+      className="flex flex-col h-full overflow-hidden bg-card shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out border border-border rounded-lg group"
+      variants={variants} // Apply animation variants
+      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }} // Subtle hover effect
+    >
+      <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2 relative">
          <div className="flex-shrink-0 pt-1">
-            <Icon className="h-8 w-8 text-primary" aria-hidden="true" />
+            {/* Increased icon size */}
+            <Icon className="h-10 w-10 text-primary" aria-hidden="true" />
           </div>
         <div className='flex-grow'>
           <CardTitle className="text-base font-semibold text-foreground mb-1">{benefit.title}</CardTitle>
@@ -59,30 +68,22 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
             {benefit.description}
           </CardDescription>
         </div>
+         {/* Badge moved to header for better visibility without image */}
+         <Badge
+           variant={benefit.type === 'free' ? 'default' : 'secondary'}
+           className="absolute top-2 right-2 text-xs py-0.5 px-1.5 bg-opacity-80 backdrop-blur-sm"
+          >
+            {benefit.type === 'free' ? 'Gratis' : 'Descuento'}
+        </Badge>
       </CardHeader>
-       <div className="relative aspect-video w-full overflow-hidden">
-           <Image
-              src={`https://picsum.photos/seed/${benefit.id}/400/225`} // 16:9 aspect ratio
-              alt={`${benefit.title} illustration`}
-              data-ai-hint={benefit.imageHint}
-              width={400}
-              height={225} // Adjusted for 16:9
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-          />
-           <Badge
-             variant={benefit.type === 'free' ? 'default' : 'secondary'}
-             className="absolute top-2 right-2 text-xs py-0.5 px-1.5 bg-opacity-80 backdrop-blur-sm"
-            >
-              {benefit.type === 'free' ? 'Gratis' : 'Descuento'}
-          </Badge>
-       </div>
-      <CardContent className="p-4 flex-grow">
-         {/* Maybe add 1-2 main benefits here for a quick glance? */}
+       {/* Image removed */}
+      <CardContent className="p-4 pt-2 flex-grow">
+         {/* Keep main benefits list */}
          <ul className="space-y-1 text-xs text-muted-foreground list-disc list-inside pl-1 mt-2">
-            {benefit.mainBenefits.slice(0, 2).map((item, index) => (
-                 <li key={index} className='truncate'>{item.split(':')[0]}</li> // Show only the key part if long
+            {benefit.mainBenefits.slice(0, 3).map((item, index) => ( // Show up to 3 benefits
+                 <li key={index} className='truncate'>{item.split(':')[0]}</li>
             ))}
-             {benefit.mainBenefits.length > 2 && <li className="text-primary font-medium">... y más</li>}
+             {benefit.mainBenefits.length > 3 && <li className="text-primary font-medium">... y más</li>}
          </ul>
       </CardContent>
       <CardFooter className="p-4 pt-2 flex justify-between items-center bg-secondary/20 border-t border-border/50">
@@ -92,7 +93,6 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
               Ver detalles <ChevronRight className="ml-1 h-3 w-3" />
             </Button>
           </DialogTrigger>
-          {/* Adjusted Dialog Content size and added ScrollArea */}
           <DialogContent className="sm:max-w-2xl max-h-[90vh] flex flex-col p-0">
              <DialogHeader className="p-6 pb-4 border-b border-border">
                <DialogTitle className="text-2xl flex items-center gap-3 font-bold text-foreground">
@@ -171,7 +171,6 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
           </a>
         </Button>
       </CardFooter>
-    </Card>
+    </MotionCard>
   );
 }
-
