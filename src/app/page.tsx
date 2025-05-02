@@ -131,7 +131,7 @@ export default function Home() {
           <motion.h1
             ref={headingRef}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight
-                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent  /* Keep text transparent for gradient */
+                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-primary /* Keep text transparent for gradient */
                        drop-shadow-[0_2px_6px_rgba(0,128,128,0.4)] leading-tight md:leading-snug lg:leading-tight" // Use leading-snug for slightly tighter lines
             style={{ visibility: 'hidden' }} // Initially hide the heading container
             // initial={{ opacity: 0 }} // Let GSAP handle opacity on chars
