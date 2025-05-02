@@ -121,9 +121,9 @@ export default function Home() {
         >
            {/* Heading with GSAP SplitText applied via ref */}
           <h1
-            ref={headingRef} // Add ref here
+            ref={headingRef}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight
-                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent
+                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-primary
                        drop-shadow-[0_2px_6px_rgba(0,128,128,0.4)] leading-tight md:leading-tight lg:leading-tight" // Ensure tight leading
             // Render the plain text; GSAP will structure it
           >
