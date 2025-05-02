@@ -59,8 +59,8 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
     >
       <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2 relative">
          <div className="flex-shrink-0 pt-1">
-            {/* Increased icon size */}
-            <Icon className="h-10 w-10 text-primary" aria-hidden="true" />
+            {/* Increased icon size, removed text-primary */}
+            <Icon className="h-10 w-10" aria-hidden="true" />
           </div>
         <div className='flex-grow'>
           <CardTitle className="text-base font-semibold text-foreground mb-1">{benefit.title}</CardTitle>
@@ -96,7 +96,8 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
           <DialogContent className="sm:max-w-2xl max-h-[90vh] flex flex-col p-0">
              <DialogHeader className="p-6 pb-4 border-b border-border">
                <DialogTitle className="text-2xl flex items-center gap-3 font-bold text-foreground">
-                  <Icon className="h-7 w-7 text-primary flex-shrink-0" aria-hidden="true" />
+                  {/* Removed text-primary from icon */}
+                  <Icon className="h-7 w-7 flex-shrink-0" aria-hidden="true" />
                   {benefit.title}
                   <Badge
                      variant={benefit.type === 'free' ? 'default' : 'secondary'}
