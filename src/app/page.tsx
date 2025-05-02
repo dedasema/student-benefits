@@ -1,4 +1,4 @@
-{'use client';
+'use client';
 
 import { BenefitCard } from '@/components/benefit-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
