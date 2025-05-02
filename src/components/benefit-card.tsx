@@ -197,9 +197,9 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
                 </div>
               </div>
             </ScrollArea>
-            <DialogFooter className="p-4 border-t border-border bg-secondary/20 flex flex-col-reverse space-y-2 sm:flex-row sm:justify-between sm:space-y-0 sm:space-x-2 items-center">
+            <DialogFooter className="p-4 border-t border-border bg-secondary/20 flex flex-col-reverse space-y-4 sm:flex-row sm:justify-between sm:space-y-0 sm:space-x-2 items-center">
               <DialogClose asChild>
-                <Button type="button" variant="outline" size="sm">
+                <Button type="button" variant="outline" size="sm" className="mt-2 sm:mt-0">
                   Cerrar
                 </Button>
               </DialogClose>
