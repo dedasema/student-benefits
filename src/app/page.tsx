@@ -17,7 +17,8 @@ export default function Home() {
   useEffect(() => {
     const now = new Date();
     setCurrentYear(now.getFullYear());
-    setCompilationDate('Mayo 2024');
+    // Set compilation date (replace with actual date if dynamic)
+    setCompilationDate('Mayo 2024'); // Example: Static date
   }, []);
 
   // Animation variants for cards
@@ -43,6 +44,25 @@ export default function Home() {
     },
   };
 
+  // Animation variants for the hero section text
+  const heroTextVariants = {
+    hidden: { opacity: 0, y: -30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }, // Smoother ease
+    },
+  };
+
+  const heroParagraphVariants = {
+    hidden: { opacity: 0, y: -15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -50,7 +70,7 @@ export default function Home() {
         <div className="container flex h-16 max-w-screen-lg items-center justify-between px-4 md:px-8">
           <div className="flex items-center gap-3">
             <GraduationCap className="h-7 w-7 text-primary" />
-            <span className="font-bold text-lg text-foreground">UAGRM Tech Hub</span> {/* Slightly smaller header title */}
+            <span className="font-bold text-lg text-foreground">UAGRM Tech Hub</span>
           </div>
            {/* Navigation links can be added here if needed */}
         </div>
@@ -58,7 +78,7 @@ export default function Home() {
 
       <main className="flex-1 container max-w-screen-lg mx-auto py-12 px-4 md:px-8">
         <motion.section
-          className="text-center mb-16" // Increased bottom margin after removing image
+          className="text-center mb-16"
           initial="hidden"
           animate="visible"
           variants={{
@@ -66,33 +86,29 @@ export default function Home() {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.3, // Stagger title and description
-                delayChildren: 0.2,
+                staggerChildren: 0.2, // Slightly faster stagger
+                delayChildren: 0.1,
               },
             },
           }}
         >
           <motion.h1
-            className="text-3xl md:text-4xl font-bold mb-4 text-foreground tracking-tight"
-             variants={{
-              hidden: { opacity: 0, y: -20 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-            }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tighter
+                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent
+                       drop-shadow-[0_2px_4px_rgba(0,128,128,0.3)]" // Teal glow/shadow
+            variants={heroTextVariants}
           >
-            Beneficios Tecnológicos para Estudiantes UAGRM
+            Beneficios Tecnológicos
+            <br className="hidden sm:block" /> para Estudiantes UAGRM
           </motion.h1>
           <motion.p
              className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8"
-             variants={{
-               hidden: { opacity: 0, y: -10 },
-               visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-             }}
+             variants={heroParagraphVariants}
           >
             Descubre las herramientas y recursos gratuitos o con descuento
             disponibles para potenciar tu aprendizaje y desarrollo profesional
             como estudiante de la Universidad Autónoma Gabriel René Moreno.
           </motion.p>
-          {/* Removed Image Section */}
         </motion.section>
 
         {/* Free Benefits Section */}
