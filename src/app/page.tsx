@@ -4,9 +4,8 @@ import { BenefitCard } from '@/components/benefit-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { benefits, recommendations } from '@/data/benefits';
 import { CheckCircle, Info, GraduationCap } from 'lucide-react';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const freeBenefits = benefits.filter((b) => b.type === 'free');
@@ -59,40 +58,46 @@ export default function Home() {
 
       <main className="flex-1 container max-w-screen-lg mx-auto py-12 px-4 md:px-8">
         <motion.section
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          className="text-center mb-16" // Increased bottom margin after removing image
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.3, // Stagger title and description
+                delayChildren: 0.2,
+              },
+            },
+          }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground tracking-tight"> {/* Reduced heading size */}
+          <motion.h1
+            className="text-3xl md:text-4xl font-bold mb-4 text-foreground tracking-tight"
+             variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+            }}
+          >
             Beneficios Tecnológicos para Estudiantes UAGRM
-          </h1>
-          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8"> {/* Adjusted text size */}
+          </motion.h1>
+          <motion.p
+             className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8"
+             variants={{
+               hidden: { opacity: 0, y: -10 },
+               visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+             }}
+          >
             Descubre las herramientas y recursos gratuitos o con descuento
             disponibles para potenciar tu aprendizaje y desarrollo profesional
             como estudiante de la Universidad Autónoma Gabriel René Moreno.
-          </p>
-          <motion.div
-             className="aspect-video w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg"
-             initial={{ opacity: 0, scale: 0.95 }}
-             animate={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 0.8, delay: 0.2 }}
-           >
-             <Image
-               src={`https://picsum.photos/1200/675`} // Aspect ratio 16:9
-               alt="Estudiantes universitarios usando tecnología en un entorno moderno"
-               data-ai-hint="students technology learning modern university campus"
-               width={1200}
-               height={675}
-               className="object-cover w-full h-full"
-               priority // Prioritize loading the hero image
-            />
-          </motion.div>
+          </motion.p>
+          {/* Removed Image Section */}
         </motion.section>
 
         {/* Free Benefits Section */}
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground"> {/* Reduced heading size */}
+          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground">
             Beneficios Gratuitos
           </h2>
           <motion.div
@@ -110,7 +115,7 @@ export default function Home() {
 
         {/* Discounted Benefits Section */}
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground"> {/* Reduced heading size */}
+          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground">
             Beneficios con Descuentos
           </h2>
           <motion.div
@@ -136,7 +141,7 @@ export default function Home() {
          >
           <Card className="bg-card border-border shadow-lg rounded-lg overflow-hidden">
             <CardHeader className="bg-secondary/30 p-4">
-              <CardTitle className="text-lg flex items-center gap-2 text-foreground font-semibold"> {/* Reduced title size */}
+              <CardTitle className="text-lg flex items-center gap-2 text-foreground font-semibold">
                 <Info className="h-5 w-5 text-primary" />
                 Recomendaciones Clave
               </CardTitle>
@@ -145,7 +150,7 @@ export default function Home() {
               <ul className="space-y-4">
                 {recommendations.map((rec, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" /> {/* Adjusted margin */}
+                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                     <span className="text-card-foreground text-sm">{rec}</span>
                   </li>
                 ))}
