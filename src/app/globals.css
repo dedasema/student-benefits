@@ -57,7 +57,7 @@ body {
     --secondary: 0 0% 15%; /* Another shade of dark grey */
     --secondary-foreground: 0 0% 96%; /* Light Grey #F5F5F5 */
     --muted: 0 0% 20%; /* Muted Grey */
-    --muted-foreground: 0 0% 65%; /* Lighter Grey for muted text */
+    --muted-foreground: 0 0% 70%; /* Lighter Grey for muted text (was 65%) */
     --accent: 180 100% 30%; /* Slightly lighter Teal for hover/accent */
     --accent-foreground: 0 0% 98%; /* Almost White */
     --destructive: 0 62.8% 30.6%; /* Darker Red */

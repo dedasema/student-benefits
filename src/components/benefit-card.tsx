@@ -57,28 +57,29 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
       variants={variants} // Apply animation variants
       whileHover={{ scale: 1.03, transition: { duration: 0.2 } }} // Subtle hover effect
     >
-      <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2 relative">
+      <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2">
          <div className="flex-shrink-0 pt-1">
-            {/* Increased icon size, removed text-primary */}
+            {/* Increased icon size, keep original colors via SVG */}
             <Icon className="h-10 w-10" aria-hidden="true" />
           </div>
-        <div className='flex-grow'>
-          <CardTitle className="text-base font-semibold text-foreground mb-1">{benefit.title}</CardTitle>
+        <div className='flex-grow min-w-0'> {/* Added min-w-0 for flex shrink */}
+          <div className="flex justify-between items-start mb-1 gap-2">
+             <CardTitle className="text-base font-semibold text-foreground leading-tight flex-1"> {/* Added leading-tight */}
+                 {benefit.title}
+             </CardTitle>
+             <Badge
+               variant={benefit.type === 'free' ? 'default' : 'secondary'}
+               className="text-xs py-0.5 px-1.5 flex-shrink-0" // Removed absolute positioning
+              >
+                {benefit.type === 'free' ? 'Gratis' : 'Descuento'}
+             </Badge>
+          </div>
           <CardDescription className="text-xs text-muted-foreground line-clamp-2">
             {benefit.description}
           </CardDescription>
         </div>
-         {/* Badge moved to header for better visibility without image */}
-         <Badge
-           variant={benefit.type === 'free' ? 'default' : 'secondary'}
-           className="absolute top-2 right-2 text-xs py-0.5 px-1.5 bg-opacity-80 backdrop-blur-sm"
-          >
-            {benefit.type === 'free' ? 'Gratis' : 'Descuento'}
-        </Badge>
       </CardHeader>
-       {/* Image removed */}
       <CardContent className="p-4 pt-2 flex-grow">
-         {/* Keep main benefits list */}
          <ul className="space-y-1 text-xs text-muted-foreground list-disc list-inside pl-1 mt-2">
             {benefit.mainBenefits.slice(0, 3).map((item, index) => ( // Show up to 3 benefits
                  <li key={index} className='truncate'>{item.split(':')[0]}</li>
@@ -95,8 +96,7 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
           </DialogTrigger>
           <DialogContent className="sm:max-w-2xl max-h-[90vh] flex flex-col p-0">
              <DialogHeader className="p-6 pb-4 border-b border-border">
-               <DialogTitle className="text-2xl flex items-center gap-3 font-bold text-foreground">
-                  {/* Removed text-primary from icon */}
+               <DialogTitle className="text-xl flex items-center gap-3 font-bold text-foreground"> {/* Reduced from 2xl */}
                   <Icon className="h-7 w-7 flex-shrink-0" aria-hidden="true" />
                   {benefit.title}
                   <Badge

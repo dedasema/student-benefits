@@ -51,7 +51,7 @@ export default function Home() {
         <div className="container flex h-16 max-w-screen-lg items-center justify-between px-4 md:px-8">
           <div className="flex items-center gap-3">
             <GraduationCap className="h-7 w-7 text-primary" />
-            <span className="font-bold text-xl text-foreground">UAGRM Tech Hub</span>
+            <span className="font-bold text-lg text-foreground">UAGRM Tech Hub</span> {/* Slightly smaller header title */}
           </div>
            {/* Navigation links can be added here if needed */}
         </div>
@@ -64,10 +64,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground tracking-tight"> {/* Reduced heading size */}
             Beneficios Tecnológicos para Estudiantes UAGRM
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8"> {/* Adjusted text size */}
             Descubre las herramientas y recursos gratuitos o con descuento
             disponibles para potenciar tu aprendizaje y desarrollo profesional
             como estudiante de la Universidad Autónoma Gabriel René Moreno.
@@ -92,7 +92,7 @@ export default function Home() {
 
         {/* Free Benefits Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground">
+          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground"> {/* Reduced heading size */}
             Beneficios Gratuitos
           </h2>
           <motion.div
@@ -110,7 +110,7 @@ export default function Home() {
 
         {/* Discounted Benefits Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground">
+          <h2 className="text-2xl font-semibold mb-8 pb-3 border-b-2 border-primary text-foreground"> {/* Reduced heading size */}
             Beneficios con Descuentos
           </h2>
           <motion.div
@@ -136,7 +136,7 @@ export default function Home() {
          >
           <Card className="bg-card border-border shadow-lg rounded-lg overflow-hidden">
             <CardHeader className="bg-secondary/30 p-4">
-              <CardTitle className="text-xl flex items-center gap-2 text-foreground font-semibold">
+              <CardTitle className="text-lg flex items-center gap-2 text-foreground font-semibold"> {/* Reduced title size */}
                 <Info className="h-5 w-5 text-primary" />
                 Recomendaciones Clave
               </CardTitle>
@@ -145,7 +145,7 @@ export default function Home() {
               <ul className="space-y-4">
                 {recommendations.map((rec, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary mt-1 shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" /> {/* Adjusted margin */}
                     <span className="text-card-foreground text-sm">{rec}</span>
                   </li>
                 ))}
