@@ -232,7 +232,7 @@ export default function Home() {
             Verifica siempre los términos actuales en los sitios oficiales de
             cada proveedor.
           </p>
-          <p className="text-xs md:text-right">
+          <p className="text-xs text-right">
             &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial.
           </p>
         </div>
