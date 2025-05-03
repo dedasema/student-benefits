@@ -7,17 +7,15 @@ import { CheckCircle, Info, GraduationCap } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import { SplitText } from 'gsap/SplitText';
 
-// Register SplitText plugin if it's not already registered
+// SplitText requiere manejo especial para SSR
+let SplitText: any;
 if (typeof window !== 'undefined') {
-  try {
+  import('gsap/SplitText').then((module) => {
+    SplitText = module.SplitText;
     gsap.registerPlugin(SplitText);
-  } catch (e) {
-    console.warn("GSAP SplitText plugin already registered or error during registration:", e);
-  }
+  });
 }
-
 
 export default function Home() {
   const freeBenefits = benefits.filter((b) => b.type === 'free');
@@ -31,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     const now = new Date();
     setCurrentYear(now.getFullYear());
-    setCompilationDate('Mayo 2024'); // Example: Static date
+    setCompilationDate('Mayo 2025'); // Actualizado a 2025
     setIsMounted(true); // Component is mounted
   }, []);
 
