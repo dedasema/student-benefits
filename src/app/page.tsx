@@ -232,8 +232,13 @@ export default function Home() {
             Verifica siempre los términos actuales en los sitios oficiales de
             cada proveedor.
           </p>
-          <p className="text-xs">
+          <p className="text-xs md:text-right">
             &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial.
+          </p>
+        </div>
+        <div className="container max-w-screen-lg mt-4 text-center">
+          <p className="text-xs">
+            Una iniciativa (vibecodeada) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
           </p>
         </div>
       </footer>

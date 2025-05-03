@@ -11,8 +11,11 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'UAGRM Tech Hub',
-  description: 'Beneficios Tecnológicos para Estudiantes de la UAGRM',
+  title: 'Beneficios Tecnológicos para Estudiantes UAGRM',
+  description: 'Descubre herramientas y recursos gratuitos o con descuento para estudiantes universitarios.',
+  icons: {
+    icon: '/logo_ficct.png' // Asegúrate de que este archivo exista en la carpeta public
+  },
 };
 
 export default function RootLayout({
