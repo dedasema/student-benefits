@@ -224,19 +224,19 @@ export default function Home() {
       </main>
 
       <footer className="py-6 md:py-8 border-t border-border/40 bg-secondary/30 text-muted-foreground">
-        <div className="container max-w-screen-lg flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left px-4 md:px-8">
-          <p className="text-xs leading-relaxed">
+        <div className="container mx-auto max-w-screen-lg flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left px-4 md:px-8">
+          <p className="text-xs leading-relaxed w-full md:w-auto">
             {compilationDate
               ? `Información recopilada en ${compilationDate}. `
               : 'Cargando fecha... '}
             Verifica siempre los términos actuales en los sitios oficiales de
             cada proveedor.
           </p>
-          <p className="text-xs text-right">
-            &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial.
+          <p className="text-xs w-full md:w-auto text-center md:text-right">
+            &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial. 
           </p>
         </div>
-        <div className="container max-w-screen-lg mt-4 text-center">
+        <div className="container mx-auto max-w-screen-lg mt-4 text-center flex justify-center">
           <p className="text-xs">
             Una iniciativa (vibecodeada) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
           </p>
