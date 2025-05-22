@@ -45,6 +45,7 @@ export interface Benefit {
     areas?: string[];
     courses?: string[]; // Added based on MongoDB example
   };
+  tested?: boolean;
 }
 
 export const benefits: Benefit[] = [
@@ -82,6 +83,7 @@ export const benefits: Benefit[] = [
       'Espera la aprobación (generalmente toma 1-7 días)',
     ],
     link: 'https://education.github.com/pack',
+    tested: true,
   },
   {
     id: 'azure',
@@ -125,6 +127,7 @@ export const benefits: Benefit[] = [
       'Completa el proceso de registro (no requiere tarjeta de crédito)',
     ],
     link: 'https://azure.microsoft.com/es-es/free/students/',
+    tested: true,
   },
   {
     id: 'figma',
@@ -170,6 +173,7 @@ export const benefits: Benefit[] = [
       'Espera la aprobación (generalmente toma 1-2 días hábiles)',
     ],
     link: 'https://www.figma.com/education/',
+    tested: true,
   },
   {
     id: 'camscanner',
@@ -210,7 +214,8 @@ export const benefits: Benefit[] = [
       'Completa el formulario de verificación estudiantil',
       'Espera la confirmación por correo (generalmente 1-2 días hábiles)',
     ],
-    link: 'https://www.camscanner.com/user/education'
+    link: 'https://www.camscanner.com/user/education',
+    tested: true,
   },
   {
     id: 'jetbrains',
@@ -264,6 +269,7 @@ export const benefits: Benefit[] = [
       'Espera la aprobación (generalmente toma 1-3 días)',
     ],
     link: 'https://www.jetbrains.com/community/education/#students',
+    tested: true,
   },
   {
     id: 'cursor',
@@ -289,7 +295,8 @@ export const benefits: Benefit[] = [
       'Regístrate con tu correo institucional',
       'Adjunta prueba de matrícula y espera confirmación (24-48 h)'
     ],
-    link: 'https://cursor.com/students'
+    link: 'https://cursor.com/students',
+    tested: true,
   },
   {
     id: 'aws',
