@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
 import {
   Dialog,
   DialogContent,
@@ -57,11 +56,14 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
       variants={variants} // Apply animation variants
       whileHover={{ scale: 1.03, transition: { duration: 0.2 } }} // Subtle hover effect
     >
-      <div className="relative">
+      <div className="relative flex flex-col h-full"> {/* Asegura layout vertical */}
+        {/* Badge Probado arriba de todo, centrado y fuera de la superposición */}
         {benefit.tested && (
-          <span className="absolute top-3 right-3 bg-green-600 text-white text-xs font-semibold px-2 py-0.5 rounded shadow z-10">
-            Probado
-          </span>
+          <div className="flex flex-col items-center space-y-1 m-5 mt-1">
+            <span className="absolute top-3 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-semibold px-3 py-0.5 rounded shadow z-20 pointer-events-none">
+              Probado
+            </span>
+          </div>
         )}
         <CardHeader className="flex flex-row items-start gap-4 p-4 pb-2">
           <div className="flex-shrink-0 pt-1">
@@ -103,7 +105,7 @@ export function BenefitCard({ benefit, variants }: BenefitCardProps) {
             )}
           </ul>
         </CardContent>
-        <CardFooter className="p-4 pt-2 flex justify-between items-center bg-secondary/20 border-t border-border/50">
+        <CardFooter className="p-4 pt-2 flex justify-between items-center bg-secondary/20 border-t border-border/50 mt-auto">
           <Dialog>
             <DialogTrigger asChild>
               <Button
