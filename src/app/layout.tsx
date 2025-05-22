@@ -11,11 +11,9 @@ const roboto = Roboto({
   variable: '--font-roboto',
 });
 
-// Definimos los metadatos base
 export const metadata: Metadata = {
   title: 'Beneficios Tecnológicos para Estudiantes UAGRM',
   description: 'Descubre herramientas y recursos gratuitos o con descuento para estudiantes universitarios.',
-  // Quitamos la configuración de íconos de aquí para usar <Head> directamente
 };
 
 export default function RootLayout({
@@ -25,12 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
-      <head>
-        {/* Usando etiquetas link directamente para mayor control */}
+      <Head>
         <link rel="icon" href="/logo_ficct.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/logo_ficct.png" />
-        {/* Esto debería forzar a los navegadores a ignorar el favicon.ico predeterminado */}
-      </head>
+      </Head>
       <body
         className={cn(
           `${roboto.variable} font-sans antialiased`,
