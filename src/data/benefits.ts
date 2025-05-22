@@ -214,7 +214,7 @@ export const benefits: Benefit[] = [
       'Completa el formulario de verificación estudiantil',
       'Espera la confirmación por correo (generalmente 1-2 días hábiles)',
     ],
-    link: 'https://www.camscanner.com/user/education',
+    link: 'https://www.camscanner.com',
     tested: true,
   },
   {
@@ -920,7 +920,7 @@ export const benefits: Benefit[] = [
       'Busca los cursos que te interesen y aplica para los descuentos de estudiantes',
       'Para programas específicos, consulta con la oficina de relaciones internacionales o la facultad correspondiente de la UAGRM sobre posibles convenios existentes',
     ],
-    link: 'https://www.coursera.org/for-university-and-college-students',
+    link: 'https://www.coursera.org',
   },
 ];
 
