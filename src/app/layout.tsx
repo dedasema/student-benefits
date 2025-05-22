@@ -25,6 +25,7 @@ export default function RootLayout({
     <html lang="es" className="dark">
       <Head>
         <link rel="icon" href="/logo_ficct.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/logo_ficct.png" type="image/png" />
         <link rel="apple-touch-icon" href="/logo_ficct.png" />
       </Head>
       <body
