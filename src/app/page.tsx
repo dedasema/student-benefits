@@ -4,6 +4,7 @@ import { BenefitCard } from '@/components/benefit-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { benefits, recommendations } from '@/data/benefits';
 import { CheckCircle, Info, GraduationCap } from 'lucide-react';
+import { GitHubIcon } from '@/components/icons';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -236,10 +237,21 @@ export default function Home() {
             &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial. 
           </p>
         </div>
-        <div className="container mx-auto max-w-screen-lg mt-4 text-center flex justify-center">
+        <div className="container mx-auto max-w-screen-lg mt-4 text-center flex flex-col items-center gap-2">
           <p className="text-xs">
             Una iniciativa (vibecodeada) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
           </p>
+          <a
+            href="https://github.com/dennisejas/student-benefits"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Repositorio en GitHub"
+            className="mt-1 inline-flex items-center justify-center hover:scale-110 transition-transform"
+          >
+            <span className="bg-white rounded-full p-1 shadow">
+              <GitHubIcon className="w-6 h-6 text-black" />
+            </span>
+          </a>
         </div>
       </footer>
     </div>
