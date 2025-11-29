@@ -5,109 +5,97 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { benefits, recommendations } from '@/data/benefits';
 import { CheckCircle, Info, GraduationCap } from 'lucide-react';
 import { GitHubIcon } from '@/components/icons';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 
-// SplitText requiere manejo especial para SSR
-let SplitText: any;
-if (typeof window !== 'undefined') {
-  import('gsap/SplitText').then((module) => {
-    SplitText = module.SplitText;
-    gsap.registerPlugin(SplitText);
-  });
-}
+// Constantes fuera del componente - no se recrean en cada render
+const HEADING_TEXT = 'Beneficios Tecnológicos para Estudiantes UAGRM';
+const COMPILATION_DATE = 'Mayo 2025';
+const CURRENT_YEAR = new Date().getFullYear();
+
+// Variants fuera del componente - mejor rendimiento
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const heroParagraphVariants = {
+  hidden: { opacity: 0, y: -15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay: 0.8 },
+  },
+};
 
 export default function Home() {
   const freeBenefits = benefits.filter((b) => b.type === 'free');
   const discountedBenefits = benefits.filter((b) => b.type === 'discounted');
 
-  const [currentYear, setCurrentYear] = useState<number | null>(null);
-  const [compilationDate, setCompilationDate] = useState<string | null>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null); // Ref for the heading element
-  const [isMounted, setIsMounted] = useState(false); // State to track mounting
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const animationRef = useRef<{ split: any; ctx: gsap.Context } | null>(null);
 
-  useEffect(() => {
-    const now = new Date();
-    setCurrentYear(now.getFullYear());
-    setCompilationDate('Mayo 2025'); // Actualizado a 2025
-    setIsMounted(true); // Component is mounted
-  }, []);
+  const initAnimation = useCallback(async () => {
+    if (!headingRef.current) return;
 
-  useEffect(() => {
-    // GSAP SplitText Animation for heading
-    // Run only if mounted and headingRef exists
-    if (isMounted && headingRef.current && typeof SplitText !== 'undefined') {
-      // Set initial visibility to hidden via style before splitting
-      gsap.set(headingRef.current, { visibility: 'visible' }); // Ensure container is visible
+    // Cargar SplitText dinámicamente
+    const { SplitText } = await import('gsap/SplitText');
+    gsap.registerPlugin(SplitText);
 
-      // Split by words first, then characters within words
-      const split = new SplitText(headingRef.current, {
+    // Variable para guardar el split
+    let split: any = null;
+
+    // Crear contexto GSAP para cleanup automático
+    const ctx = gsap.context(() => {
+      split = new SplitText(headingRef.current!, {
         type: 'words,chars',
         wordsClass: 'split-word inline-block mr-[0.15em]',
-        charsClass: 'split-char inline-block opacity-0', // Start chars with opacity 0
+        charsClass: 'split-char inline-block',
       });
 
-      // Animate the characters
-      gsap.fromTo(split.chars,
-        { // from state
-          y: 30,
-          opacity: 0,
-        },
-        { // to state
+      gsap.set(headingRef.current!, { visibility: 'visible' });
+
+      gsap.fromTo(
+        split.chars,
+        { y: 30, opacity: 0 },
+        {
           duration: 0.6,
           opacity: 1,
           y: 0,
           ease: 'power3.out',
           stagger: 0.03,
-          // Optionally add a small delay if needed to ensure setup completes
-          // delay: 0.1
         }
       );
+    }, headingRef);
 
-      // Cleanup function to revert the split text on component unmount
-      return () => {
-        if (split.revert) {
-           split.revert();
-        }
-      };
-    }
-  }, [isMounted]); // Depend on isMounted state
+    // Guardar referencias después de crear el contexto
+    animationRef.current = { split, ctx };
+  }, []);
 
-  // Animation variants for cards
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
+  useEffect(() => {
+    initAnimation();
 
-  // Animation variants for the container (staggering children)
-  const containerVariants = {
-    hidden: { opacity: 1 }, // Start with container visible
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-
-  const heroParagraphVariants = {
-    hidden: { opacity: 0, y: -15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.7, ease: 'easeOut', delay: 0.8 }, // Adjusted delay
-    },
-  };
-
-  const headingText = 'Beneficios Tecnológicos para Estudiantes UAGRM';
+    return () => {
+      // Cleanup robusto
+      if (animationRef.current) {
+        animationRef.current.split?.revert?.();
+        animationRef.current.ctx?.revert?.();
+      }
+    };
+  }, [initAnimation]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
@@ -127,18 +115,15 @@ export default function Home() {
           className="text-center mb-16 overflow-hidden"
         >
            {/* Heading with initial hidden state managed by visibility */}
-          <motion.h1
+          <h1
             ref={headingRef}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight
-                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-primary /* Keep text transparent for gradient */
-                       drop-shadow-[0_2px_6px_rgba(0,128,128,0.4)] leading-tight md:leading-snug lg:leading-tight" // Use leading-snug for slightly tighter lines
-            style={{ visibility: 'hidden' }} // Initially hide the heading container
-            // initial={{ opacity: 0 }} // Let GSAP handle opacity on chars
-            // animate={{ opacity: 1 }}
-            // transition={{ duration: 0.1 }} // Minimal fade-in for the container itself if needed
+                       bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-primary
+                       drop-shadow-[0_2px_6px_rgba(0,128,128,0.4)] leading-tight md:leading-snug lg:leading-tight"
+            style={{ visibility: 'hidden' }}
           >
-            {headingText}
-          </motion.h1>
+            {HEADING_TEXT}
+          </h1>
           <motion.p
             className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto mb-8"
             variants={heroParagraphVariants}
@@ -227,14 +212,12 @@ export default function Home() {
       <footer className="py-6 md:py-8 border-t border-border/40 bg-secondary/30 text-muted-foreground">
         <div className="container mx-auto max-w-screen-lg flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left px-4 md:px-8">
           <p className="text-xs leading-relaxed w-full md:w-auto">
-            {compilationDate
-              ? `Información recopilada en ${compilationDate}. `
-              : 'Cargando fecha... '}
+            Información recopilada en {COMPILATION_DATE}.{' '}
             Verifica siempre los términos actuales en los sitios oficiales de
             cada proveedor.
           </p>
           <p className="text-xs w-full md:w-auto text-center md:text-right">
-            &copy; {currentYear ?? '...'} UAGRM Tech Hub. Un recurso no oficial. 
+            &copy; {CURRENT_YEAR} UAGRM Tech Hub. Un recurso no oficial. 
           </p>
         </div>
         <div className="container mx-auto max-w-screen-lg mt-4 text-center flex flex-col items-center gap-2">
