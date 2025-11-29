@@ -225,7 +225,7 @@ export default function Home() {
             Una iniciativa (vibecodeada) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
           </p>
           <a
-            href="https://github.com/dennisejas/student-benefits"
+            href="https://github.com/dedasema/student-benefits"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Repositorio en GitHub"
