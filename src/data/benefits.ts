@@ -296,7 +296,6 @@ export const benefits: Benefit[] = [
       'Adjunta prueba de matrícula y espera confirmación (24-48 h)'
     ],
     link: 'https://cursor.com/students',
-    tested: true,
   },
   {
     id: 'aws',
