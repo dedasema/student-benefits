@@ -28,7 +28,7 @@ Este proyecto es una plataforma web que recopila y presenta los principales bene
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/dennisejas/student-benefits.git
+   git clone https://github.com/dedasema/student-benefits.git
    cd student-benefits
    ```
 
