@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import Script from 'next/script';
 
 const roboto = Roboto({
   weight: ['400', '500', '700'],
@@ -34,6 +35,11 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <Script
+          defer  
+          src='https://static.cloudflareinsights.com/beacon.min.js' 
+          data-cf-beacon='{"token": "dabbe8151bb048cf95c9a0f408ff1256"}'
+          />
       </body>
     </html>
   );
