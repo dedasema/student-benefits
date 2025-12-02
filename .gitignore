@@ -39,3 +39,10 @@ next-env.d.ts
 
 .genkit/*
 .env*
+
+# IDE/Editor specific
+.idx/
+.vscode/
+
+# Temporary files
+.modified
