@@ -222,7 +222,7 @@ export default function Home() {
         </div>
         <div className="container mx-auto max-w-screen-lg mt-4 text-center flex flex-col items-center gap-2">
           <p className="text-xs">
-            Una iniciativa (vibecodeada) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
+            Una iniciativa (mayormente vibecodeada y Open Source) de <a href="https://dennis-sejas.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-white hover:text-accent transition-colors underline decoration-primary decoration-2 underline-offset-2">Dennis David Sejas Mamani</a>
           </p>
           <a
             href="https://github.com/dedasema/student-benefits"
