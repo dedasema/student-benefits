@@ -14,7 +14,7 @@ import {
   CamScannerIcon,
   PlatziIcon,
   EdTeamIcon,
-  CursorIcon,
+  // CursorIcon,
   WindsurfIcon,
   SpotifyIcon,
   AppleMusicIcon,
@@ -271,32 +271,32 @@ export const benefits: Benefit[] = [
     link: 'https://www.jetbrains.com/community/education/#students',
     tested: true,
   },
-  {
-    id: 'cursor',
-    title: 'Cursor IDE (AI)',
-    Icon: CursorIcon,
-    imageHint: 'code editor programming',
-    type: 'free',
-    description:
-      'Cursor, el IDE basado en VS Code con copiloto de IA integrado, otorga su plan Pro gratis durante 1 año a estudiantes verificados.',
-    mainBenefits: [
-      'Plan Pro gratuito por 12 meses',
-      'Modelos premium (GPT-4o, Claude 3.7, Gemini 2.5) incluidos',
-      '500 peticiones rápidas mensuales + peticiones lentas ilimitadas',
-      'Colaboración en tiempo real y depuración asistida por IA'
-    ],
-    requirements: [
-      'Correo institucional .edu (o equivalente)',
-      'Verificación vía formulario “Cursor for Students”',
-      'Mayores de 16 años'
-    ],
-    howToAccess: [
-      'Visita la página “Cursor for Students”',
-      'Regístrate con tu correo institucional',
-      'Adjunta prueba de matrícula y espera confirmación (24-48 h)'
-    ],
-    link: 'https://cursor.com/students',
-  },
+  //   {
+  //     id: 'cursor',
+  //     title: 'Cursor IDE (AI)',
+  //     Icon: CursorIcon,
+  //     imageHint: 'code editor programming',
+  //     type: 'free',
+  //     description:
+  //       'Cursor, el IDE basado en VS Code con copiloto de IA integrado, otorga su plan Pro gratis durante 1 año a estudiantes verificados.',
+  //     mainBenefits: [
+  //       'Plan Pro gratuito por 12 meses',
+  //       'Modelos premium (GPT-4o, Claude 3.7, Gemini 2.5) incluidos',
+  //       '500 peticiones rápidas mensuales + peticiones lentas ilimitadas',
+  //       'Colaboración en tiempo real y depuración asistida por IA'
+  //     ],
+  //     requirements: [
+  //       'Correo institucional .edu (o equivalente)',
+  //       'Verificación vía formulario “Cursor for Students”',
+  //       'Mayores de 16 años'
+  //     ],
+  //     howToAccess: [
+  //       'Visita la página “Cursor for Students”',
+  //       'Regístrate con tu correo institucional',
+  //       'Adjunta prueba de matrícula y espera confirmación (24-48 h)'
+  //     ],
+  //     link: 'https://cursor.com/students',
+  //   },
   {
     id: 'aws',
     title: 'AWS Educate',
