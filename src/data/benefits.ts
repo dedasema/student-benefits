@@ -6,6 +6,7 @@ import {
   JetBrainsIcon,
   AutodeskIcon,
   FigmaIcon,
+  LucidIcon,
   MongoDBIcon,
   UnityIcon,
   AdobeIcon,
@@ -44,6 +45,7 @@ export interface Benefit {
     models?: string[];
     areas?: string[];
     courses?: string[]; // Added based on MongoDB example
+    integrations?: string[];
   };
   tested?: boolean;
 }
@@ -297,6 +299,67 @@ export const benefits: Benefit[] = [
   //     ],
   //     link: 'https://cursor.com/students',
   //   },
+  {
+    id: 'lucid',
+    title: 'Lucid for Education',
+    Icon: LucidIcon, // Requiere importar el ícono correspondiente
+    imageHint: 'lucidchart diagrams flowcharts collaboration engineering',
+    description: 'Suite de colaboración visual líder que incluye Lucidchart (diagramas) y Lucidspark (pizarra). El plan educativo "Edu Free" elimina la restricción de 60 objetos del plan gratuito normal, permitiendo crear diagramas de ingeniería y mapas mentales con complejidad ilimitada.',
+    mainBenefits: [
+      'Objetos y formas ilimitadas por documento (vs. límite de 60 en cuentas normales)',
+      'Acceso a plantillas educativas y bibliotecas de formas premium',
+      'Creación de documentos ilimitada (nota: solo los 3 más recientes son editables simultáneamente)',
+      'Importación de archivos Visio, Gliffy y Omnigraffle',
+      'Colaboración en tiempo real con compañeros de clase'
+    ],
+    requirements: [
+      'Correo institucional activo (@uagrm.edu.bo)'
+    ],
+    howToAccess: [
+      'Visita Lucid for Education',
+      'Haz clic en "Get Started"',
+      'Crea una cuenta de Lucid o inicia sesión si ya tienes una',
+      'Verifica tu elegibilidad utilizando tu correo institucional UAGRM',
+      'Una vez verificado, obtendrás acceso para descargar el software'
+    ],
+    link: 'https://lucidforeducation.com/',
+    type: 'free',
+    details: {
+      apps: ['Lucidchart', 'Lucidspark'],
+      features: [
+        'Objetos y formas ilimitadas por documento (vs. límite de 60 en cuentas normales)',
+        'Acceso a plantillas educativas y bibliotecas de formas premium',
+        'Creación de documentos ilimitada (nota: solo los 3 más recientes son editables simultáneamente)',
+        'Importación de archivos Visio, Gliffy y Omnigraffle',
+        'Colaboración en tiempo real con compañeros de clase'
+      ],
+      integrations: [
+        'Google Workspace',
+        'Microsoft Office',
+        'Slack',
+        'Trello',
+        'Zoom',
+        'Microsoft Teams',
+        'Google Meet',
+        'Microsoft Stream',
+        'Google Keep',
+        'Microsoft OneNote'
+      ],
+      areas: [
+        'Diseño',
+        'Ingeniería',
+        'Educación',
+        'Marketing',
+        'Comunicación',
+        'Producción',
+        'Gobierno',
+        'Salud',
+        'Arquitectura',
+        'Arte'
+      ]
+    },
+    tested: true
+  },
   {
     id: 'aws',
     title: 'AWS Educate',
