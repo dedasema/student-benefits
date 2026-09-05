@@ -46,7 +46,7 @@ export default function Home() {
   const discountedBenefits = benefits.filter((b) => b.type === 'discounted');
 
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const animationRef = useRef<{ split: any; ctx: gsap.Context } | null>(null);
+  const animationRef = useRef<{ split: unknown; ctx: gsap.Context } | null>(null);
 
   const initAnimation = useCallback(async () => {
     if (!headingRef.current) return;
@@ -56,7 +56,7 @@ export default function Home() {
     gsap.registerPlugin(SplitText);
 
     // Variable para guardar el split
-    let split: any = null;
+    let split: unknown = null;
 
     // Crear contexto GSAP para cleanup automático
     const ctx = gsap.context(() => {
